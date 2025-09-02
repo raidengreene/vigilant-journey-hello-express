@@ -14,9 +14,13 @@ app.get('/', (req, res) => {
   res.send("Hello Express from render.  <a href='/raiden'>raiden</a>")
 })
 app.get('/raiden', (req, res) => {
-  //res.send("raiden <a href='/'>home</a>")
   res.sendFile(join(__dirname, 'public', 'raiden.html'))
 })
+app.get('/api/raiden', (req, res) => {
+  const myVar = 'Hello from server!';
+  res.json({ myVar });
+})
+
 //endpoints...middleware...apis?
 //send an html file
 
