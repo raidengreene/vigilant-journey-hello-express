@@ -25,11 +25,9 @@ const client = new MongoClient(uri, {
 let db;
 async function connectDB() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
-    db = clientdb('school'); // database name
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    db = client.db("school"); // Database name
+    console.log("Connected to MongoDB!");
   } catch (error) {
     console.error("Failed to connect to MongoDB:", error);
   }
@@ -38,7 +36,7 @@ connectDB();
 
 
 app.get('/', (req, res) => {
-  res.send("Hello Express from render.  <a href='/raiden'>raiden</a>")
+  res.send("Hello Express from render.  <a href='/raiden'>raiden</a><br><a href='student-crud.html'>📝 crud time!</a><br><a href='advanced-student-manager.html'>🚀 Advanced CRUD!</a>")
 })
 app.get('/raiden', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'raiden.html'))
